@@ -1,0 +1,10 @@
+this is why the numbers did not render we needed t omake a function in the contract because uint256 is a compley type string arent so that hwy it rendered without it On the other hand, when you have a state variable with a complex data type, such as uint256, the automatically generated getter function has the same name as the variable, but it returns the variable directly without any conversion. In your case, hit gets a function like:
+
+solidity
+Copy code
+function hit() public view returns (uint256) {
+    return hit;
+}
+So, for string state variables like ogcall, you get the getter function automatically, but for more complex types like uint256, you may need to provide a function with the same name and explicitly define the return type.
+
+In summary, for simple types like string, Solidity automatically generates the getter function. For more complex types, you may need to write the getter function yourself to explicitly specify the return type.

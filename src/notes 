@@ -8,3 +8,5 @@ function hit() public view returns (uint256) {
 So, for string state variables like ogcall, you get the getter function automatically, but for more complex types like uint256, you may need to provide a function with the same name and explicitly define the return type.
 
 In summary, for simple types like string, Solidity automatically generates the getter function. For more complex types, you may need to write the getter function yourself to explicitly specify the return type.
+
+got to make sure address and contract address are on the same network 

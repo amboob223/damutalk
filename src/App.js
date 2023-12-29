@@ -78,13 +78,43 @@ const App = ()=>{
             
     console.error("Transaction failed:", error.message);
   }
-            
-            
 
-          }
+  
+  
+}
+
+const write = async()=>{
+  //to write we combine some of what we did earlier we got to get the provider
+  //  and the wallet totransact and the erc and a contract instance an dthe private
+  //   key and the contract instance and some test lunk
+        const provider = new ethers.JsonRpcProvider("https://sepolia.infura.io/v3/d1389089801b4e438f109936b38f311d")
+     
+  
+        const acct2 = "0xda9e8e71bB750a996Af33ebB8aBb18cd9EB9DC75"
+        const contractAddress = "0xb227f007804c16546Bd054dfED2E7A1fD5437678"
+        const ERC20_ABI = [
+          "function balanceOf(address) view returns(uint256)",
+          "function transfer(address to, uint amount) returns (bool)"
+        ]
+        const privateKey = "5ccb69e0e14929628bdbdd4fbb1159f730f55c26eea04f8f370e6664546a5786";
+        const wallet = new ethers.Wallet(privateKey,provider)
+        const contract = new ethers.Contract(contractAddress,ERC20_ABI,wallet)
+        console.log(ethers.formatEther(await contract.balanceOf(wallet.address)))
+        console.log(contract)
+        const balance = await contract.balanceOf(wallet.address);
+
+            const waltract = contract.connect(wallet)
+            console.log(waltract)
+            const tx = await waltract.transfer(acct2,balance)
+            await tx.wait()
+
+            console.log(tx)
 
 
-    return(<div>
+} // the main thing bout this one is to swap tokens not eth eth is not a smart contract its a platform used to make smart contracts 
+          
+
+return(<div>
 <button onClick={connectMetamask}>connect</button>
       <p>
         {connectedAddress} is the connected wallet to get the word from up top`
@@ -94,7 +124,7 @@ const App = ()=>{
 <p> and that he got ${hit} on it </p>
 
 <button onClick={transact}>sendBread</button>
-
+<button onClick={write}>write</button>
 
 
     </div>)

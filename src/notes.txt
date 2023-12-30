@@ -10,3 +10,5 @@ So, for string state variables like ogcall, you get the getter function automati
 In summary, for simple types like string, Solidity automatically generates the getter function. For more complex types, you may need to write the getter function yourself to explicitly specify the return type.
 
 got to make sure address and contract address are on the same network 
+
+writing to the blockchain is executing and calling fuctions on a contract 
